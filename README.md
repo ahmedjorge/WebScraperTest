@@ -27,7 +27,7 @@ Esta é uma API simples construída com Node.js e Express que permite buscar inf
    npm install
    ```
 
-3. Instale as dependências:
+3. Execute o TSC:
    ```bash
    tsc
    ```
