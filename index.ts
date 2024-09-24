@@ -9,7 +9,6 @@ app.use(cors());
 
 app.get('/:mark', async (req: Request, res: Response) => {
     let mark = req.params.mark;
-    console.log({mark})
     try {
         const laptops = await Laptops(mark);
         res.json(laptops);
