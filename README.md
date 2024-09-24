@@ -45,9 +45,9 @@ A API permite buscar laptops filtrando por marca. Basta enviar uma requisição 
 
 ## Endpoints
 
-### `GET /:marca`
+### `GET /:mark`
 
-- **Parâmetro:** `marca` (string) - A marca do laptop que deseja buscar.
+- **Parâmetro:** `mark` (string) - A marca do laptop que deseja buscar.
 - **Resposta:**
     - `200 OK` - Retorna uma lista de laptops correspondentes à marca especificada.
     - `400 Bad Request` - Se a marca não for especificada.
