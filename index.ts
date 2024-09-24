@@ -7,7 +7,7 @@ const PORT = 3000;
 
 app.use(cors());
 
-app.get('/laptops/:marca', async (req: Request, res: Response) => {
+app.get('/:marca', async (req: Request, res: Response) => {
     let marca = req.params.marca;
     try {
         const laptops = await Laptops(marca);
@@ -18,10 +18,13 @@ app.get('/laptops/:marca', async (req: Request, res: Response) => {
     }
 });
 
-app.get('/laptops', async (req: Request, res: Response) => {
-    res.status(500).json({ message: 'Por favor, especifique um modelo, ex: http://127.0.0.1:3000/Lenovo!'});
+app.use((req: Request, res: Response) => {
+    res.status(400).json({
+        message: 'Por favor, especifique um modelo, ex: http://127.0.0.1:3000/Lenovo!'
+    });
 });
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`http://127.0.0.1:${PORT}`);
 });

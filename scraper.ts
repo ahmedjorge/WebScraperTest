@@ -15,19 +15,16 @@ export async function Laptops(marca: string): Promise<Laptop[]> {
 
     marca = marca.replace(/\s+/g, '').toLowerCase();
 
-    // Enquanto houver páginas
     while (hasNextPage) {
-        const url = `https://webscraper.io/test-sites/e-commerce/static/computers/laptops?page=${page}`;
-        const { data } = await axios.get(url);
-        const $ = cheerio.load(data);
+        let url = `https://webscraper.io/test-sites/e-commerce/static/computers/laptops?page=${page}`;
+        let { data } = await axios.get(url);
+        let $ = cheerio.load(data);
 
-        // Verifica se existem laptops nesta página
-        const laptopsOnPage: Laptop[] = $('.thumbnail').toArray().map((element) => {
-            const title = $(element).find('.caption h4 a').text();
-            const price = $(element).find('.caption .price').text().replace('$', '');
-            const description = $(element).find('.caption p').text();
-            const imageUrl = $(element).find('img').attr('src') || '';
-
+        let laptopsOnPage: Laptop[] = $('.card.thumbnail').toArray().map((element) => {
+            let title = $(element).find('.caption h4 a').text();
+            let price = $(element).find('.caption .price').text().replace('$', '');
+            let description = $(element).find('.caption p').text();
+            let imageUrl = $(element).find('img').attr('src') || '';
 
             return {
                 title,
@@ -39,14 +36,11 @@ export async function Laptops(marca: string): Promise<Laptop[]> {
 
         allLaptops = allLaptops.concat(laptopsOnPage);
 
-        // Verifica se há um botão de "próxima página" para continuar
-        const nextPageButton = $('.pagination li').last();
+        let nextPageButton = $('.pagination li').last();
         hasNextPage = !nextPageButton.hasClass('disabled');
 
-        // Passa para a próxima página
         page++;
     }
 
-    // Retorna a lista de laptops ordenada por preço
     return allLaptops.sort((a, b) => a.price - b.price);
 }
