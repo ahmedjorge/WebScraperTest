@@ -12,12 +12,12 @@ function prepareString (str: string): string {
     return str.replace(/\s+/g, '').toLowerCase();
 }
 
-export async function Laptops(mark: string): Promise<Laptop[]> {
+export async function Laptops(brand: string): Promise<Laptop[]> {
     let page = 1;
     let hasNextPage = true;
     let allLaptops: Laptop[] = [];
 
-    mark = prepareString(mark);
+    brand = prepareString(brand);
 
     while (hasNextPage) {
         let url = `https://webscraper.io/test-sites/e-commerce/static/computers/laptops?page=${page}`;
@@ -36,7 +36,7 @@ export async function Laptops(mark: string): Promise<Laptop[]> {
                 description,
                 imageUrl
             };
-        }).filter(({title, description}) => prepareString(title).includes(mark) || prepareString(description).includes(mark));
+        }).filter(({title, description}) => prepareString(title).includes(brand) || prepareString(description).includes(brand));
 
         allLaptops = allLaptops.concat(laptopsOnPage);
 

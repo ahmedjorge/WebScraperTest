@@ -7,10 +7,10 @@ const PORT = 3000;
 
 app.use(cors());
 
-app.get('/:mark', async (req: Request, res: Response) => {
-    let mark = req.params.mark;
+app.get('/:brand', async (req: Request, res: Response) => {
+    let brand = req.params.brand;
     try {
-        const laptops = await Laptops(mark);
+        const laptops = await Laptops(brand);
         res.json(laptops);
     } catch (error) {
         console.error(error);
