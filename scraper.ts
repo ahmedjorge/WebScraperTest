@@ -5,7 +5,8 @@ type Laptop = {
     title: string;
     price: number;
     description: string;
-    imageUrl: string
+    imageUrl: string,
+    link: string
 };
 
 function prepareString (str: string): string {
@@ -27,6 +28,7 @@ export async function Laptops(brand: string): Promise<Laptop[]> {
         let laptopsOnPage: Laptop[] = $('.card.thumbnail').toArray().map((element) => {
             let title = $(element).find('.caption h4 a').text();
             let price = $(element).find('.caption .price').text().replace('$', '');
+            let link = $(element).find('.caption a[href]').attr('href') || '';
             let description = $(element).find('.caption p').text();
             let imageUrl = $(element).find('img').attr('src') || '';
 
@@ -34,7 +36,8 @@ export async function Laptops(brand: string): Promise<Laptop[]> {
                 title,
                 price: parseFloat(price),
                 description,
-                imageUrl
+                imageUrl,
+                link
             };
         }).filter(({title, description}) => prepareString(title).includes(brand) || prepareString(description).includes(brand));
 

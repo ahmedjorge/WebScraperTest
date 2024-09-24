@@ -64,17 +64,19 @@ A resposta será um JSON com uma lista de laptops que contêm "Lenovo" no títul
 
 ```json
 [
-    {
-      "description": "Lenovo V110-15IAP, 15.6 HD, Celeron N3350 1.1GHz, 4GB, 128GB SSD, Windows 10 Home"
-      "imageUrl": "/images/test-sites/e-commerce/items/cart2.png",
-      "price": 321.94,
-      "title": "Lenovo V110-15..."
-    },
-    {
-      "description": "Asus VivoBook 15 X540NA-GQ008T Chocolate Black, 15.6 HD, Pentium N4200, 4GB, 500GB, Windows 10 Home, En kbd"
-      "imageUrl": "/images/test-sites/e-commerce/items/cart2.png",
-      "price": 356.49,
-      "title": "Lenovo V110-15..."
-    }
+  {
+    "description": "Lenovo V110-15IAP, 15.6 HD, Celeron N3350 1.1GHz, 4GB, 128GB SSD, Windows 10 Home"
+    "imageUrl": "/images/test-sites/e-commerce/items/cart2.png",
+    "price": 321.94,
+    "title": "Lenovo V110-15...",
+    "link": "/test-sites/e-commerce/static/product/63"
+  },
+  {
+    "description": "Asus VivoBook 15 X540NA-GQ008T Chocolate Black, 15.6 HD, Pentium N4200, 4GB, 500GB, Windows 10 Home, En kbd"
+    "imageUrl": "/images/test-sites/e-commerce/items/cart2.png",
+    "price": 356.49,
+    "title": "Lenovo V110-15...",
+    "link": "/test-sites/e-commerce/static/product/64"
+  }
 ]
 ```
