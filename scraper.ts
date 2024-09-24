@@ -11,6 +11,7 @@ type Laptop = {
 function prepareString (str: string): string {
     return str.replace(/\s+/g, '').toLowerCase();
 }
+
 export async function Laptops(marca: string): Promise<Laptop[]> {
     let page = 1;
     let hasNextPage = true;
