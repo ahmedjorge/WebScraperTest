@@ -9,6 +9,7 @@ app.use(cors());
 
 app.get('/:marca', async (req: Request, res: Response) => {
     let marca = req.params.marca;
+    console.log({marca})
     try {
         const laptops = await Laptops(marca);
         res.json(laptops);

@@ -8,12 +8,15 @@ type Laptop = {
     imageUrl: string
 };
 
+function prepareString (str: string): string {
+    return str.replace(/\s+/g, '').toLowerCase();
+}
 export async function Laptops(marca: string): Promise<Laptop[]> {
     let page = 1;
     let hasNextPage = true;
     let allLaptops: Laptop[] = [];
 
-    marca = marca.replace(/\s+/g, '').toLowerCase();
+    marca = prepareString(marca);
 
     while (hasNextPage) {
         let url = `https://webscraper.io/test-sites/e-commerce/static/computers/laptops?page=${page}`;
@@ -32,7 +35,7 @@ export async function Laptops(marca: string): Promise<Laptop[]> {
                 description,
                 imageUrl
             };
-        }).filter((laptop) => laptop.title.toLowerCase().includes(marca));
+        }).filter(({title, description}) => prepareString(title).includes(marca) || prepareString(description).includes(marca));
 
         allLaptops = allLaptops.concat(laptopsOnPage);
 
