@@ -17,16 +17,17 @@ export async function Laptops(brand: string): Promise<Laptop[]> {
     let page = 1;
     let hasNextPage = true;
     let allLaptops: Laptop[] = [];
+    let site = `https://webscraper.io`;
 
     brand = prepareString(brand);
 
     while (hasNextPage) {
-        let url = `https://webscraper.io/test-sites/e-commerce/static/computers/laptops?page=${page}`;
+        let url = `${site}/test-sites/e-commerce/static/computers/laptops?page=${page}`;
         let { data } = await axios.get(url);
         let $ = cheerio.load(data);
 
         let laptopsOnPage: Laptop[] = $('.card.thumbnail').toArray().map((element) => {
-            let title = $(element).find('.caption h4 a').text();
+            let title = $(element).find('.caption h4 a').attr("title") || "";
             let price = $(element).find('.caption .price').text().replace('$', '');
             let link = $(element).find('.caption a[href]').attr('href') || '';
             let description = $(element).find('.caption p').text();
@@ -36,8 +37,8 @@ export async function Laptops(brand: string): Promise<Laptop[]> {
                 title,
                 price: parseFloat(price),
                 description,
-                imageUrl,
-                link
+                imageUrl: `${site}${imageUrl}`,
+                link: `${site}${link}`
             };
         }).filter(({title, description}) => prepareString(title).includes(brand) || prepareString(description).includes(brand));
 

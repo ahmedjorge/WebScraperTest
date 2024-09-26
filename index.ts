@@ -18,6 +18,17 @@ app.get('/:brand', async (req: Request, res: Response) => {
     }
 });
 
+app.post('/', async (req: Request, res: Response) => {
+    let brand = req.body.filter;
+    try {
+        const laptops = await Laptops(brand);
+        res.json(laptops);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro ao buscar laptops', error });
+    }
+});
+
 app.use((req: Request, res: Response) => {
     res.status(400).json({
         message: 'Por favor, especifique um modelo, ex: http://127.0.0.1:3000/Lenovo!'

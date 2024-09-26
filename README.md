@@ -22,17 +22,22 @@ Esta é uma API simples construída com Node.js e Express que permite buscar inf
    cd WebScraperTest
    ```
 
-3. Instale as dependências:
+3. Instale o TypeScript globalmente (caso ainda não tenha):
+   ```bash
+   npm install -g typescript
+   ```
+
+4. Instale as dependências:
    ```bash
    npm install
    ```
 
-3. Execute o TSC:
+5. Compile o código TypeScript:
    ```bash
    tsc
    ```
 
-4. Inicie o servidor:
+6. Inicie o servidor:
    ```bash
    npm start
    ```
@@ -41,7 +46,7 @@ O servidor estará rodando em `http://127.0.0.1:3000`.
 
 ## Uso
 
-A API permite buscar laptops filtrando por marca. Basta enviar uma requisição GET para o endpoint apropriado.
+A API permite buscar laptops filtrando por marca. Basta enviar uma requisição GET ou POST para o endpoint apropriado.
 
 ## Endpoints
 
@@ -52,7 +57,24 @@ A API permite buscar laptops filtrando por marca. Basta enviar uma requisição 
     - `200 OK` - Retorna uma lista de laptops correspondentes à marca especificada.
     - `400 Bad Request` - Se a marca não for especificada.
 
+### `POST /`
+
+- **Corpo da Requisição:** JSON contendo o campo `filter` que representa a marca do laptop que deseja buscar.
+
+  Exemplo:
+  ```json
+  {
+    "filter": "Lenovo"
+  }
+  ```
+
+- **Resposta:**
+    - `200 OK` - Retorna uma lista de laptops correspondentes à marca especificada.
+    - `500 Internal Server Error` - Se ocorrer algum erro no processo de busca.
+
 ## Exemplo de Uso
+
+### `GET /:brand`
 
 Para buscar laptops da marca **Lenovo**, você deve fazer uma requisição para:
 
@@ -60,7 +82,7 @@ Para buscar laptops da marca **Lenovo**, você deve fazer uma requisição para:
 http://127.0.0.1:3000/Lenovo
 ```
 
-A resposta será um JSON com uma lista de laptops que contêm "Lenovo" no título. Aqui está um exemplo da resposta:
+A resposta será um JSON com uma lista de laptops que contêm "Lenovo" no título. Exemplo:
 
 ```json
 [
@@ -80,3 +102,21 @@ A resposta será um JSON com uma lista de laptops que contêm "Lenovo" no títul
   }
 ]
 ```
+
+### `POST /`
+
+Para buscar laptops da marca **Lenovo** usando o método `POST`, envie um JSON contendo o campo `filter` para o seguinte endpoint:
+
+```
+POST http://127.0.0.1:3000/
+```
+
+Exemplo de corpo da requisição:
+
+```json
+{
+  "filter": "Lenovo"
+}
+```
+
+A resposta será um JSON similar ao exemplo anterior, com uma lista de laptops que contêm "Lenovo" no título.
