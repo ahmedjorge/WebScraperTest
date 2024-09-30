@@ -64,8 +64,6 @@ export async function Laptops(brand: string): Promise<Laptop[]> {
                 }
             });
 
-            console.log(hds);
-
             allLaptops.push( {
                 title,
                 price: +price,

@@ -91,14 +91,42 @@ A resposta será um JSON com uma lista de laptops que contêm "Lenovo" no títul
     "imageUrl": "https://webscraper.io/images/test-sites/e-commerce/items/cart2.png",
     "price": 321.94,
     "title": "Lenovo V110-15...",
-    "link": "/test-sites/e-commerce/static/product/63"
+    "link": "/test-sites/e-commerce/static/product/63",
+    "prices": [
+      {
+        "volume": 128,
+        "price": 321.94
+      },
+      {
+        "volume": 256,
+        "price": 341.94
+      },
+      {
+        "volume": 512,
+        "price": 361.94
+      }
+    ]
   },
   {
     "description": "Asus VivoBook 15 X540NA-GQ008T Chocolate Black, 15.6 HD, Pentium N4200, 4GB, 500GB, Windows 10 Home, En kbd",
     "imageUrl": "https://webscraper.io/images/test-sites/e-commerce/items/cart2.png",
     "price": 356.49,
     "title": "Lenovo V110-15...",
-    "link": "https://webscraper.io/test-sites/e-commerce/static/product/64"
+    "link": "https://webscraper.io/test-sites/e-commerce/static/product/64",
+    "prices": [
+      {
+        "volume": 128,
+        "price": 356.49
+      },
+      {
+        "volume": 256,
+        "price": 376.49
+      },
+      {
+        "volume": 512,
+        "price": 396.49
+      }
+    ]
   }
 ]
 ```
